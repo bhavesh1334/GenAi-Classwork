@@ -95,6 +95,7 @@ async function main() {
     {
       role: "user",
       content:
+        // "tell me all stats of github user bhavesh1334",
         "In the current directly, read the changes via git and push the changes to github with good commit message",
     },
   ];
