@@ -1,5 +1,7 @@
 import "dotenv/config";
-import { client } from "../utils/client.js";
+
+import { OpenAI } from "openai";
+const client = new OpenAI();
 
 const SYSTEM_PROMPT = `
     You are an AI assistant who works on START, THINK and OUTPUT format.
@@ -48,12 +50,12 @@ const SYSTEM_PROMPT = `
 async function main() {
   const messages = [
     { role: "system", content: SYSTEM_PROMPT },
-    { role: "user", content: "Can you solve 3 + 4 * 10 - 4 * 3/9-31" },
+    { role: "user", content: "how can I beacome the best coder" },
   ];
 
   while (true) {
     const response = await client.chat.completions.create({
-      model: "gemini-1.5-flash",
+      model: "gpt-4o-mini",
       messages,
     });
 
@@ -66,29 +68,29 @@ async function main() {
     });
 
     if (parsedContent.step === "OUTPUT") {
-      console.log("Final Output: ", parsedResponse.content);
+      console.log("Final Output: ", parsedContent.content);
       break;
     }
 
     if (parsedContent.step === "THINK") {
-      console.log("Think: ", parsedResponse.content);
+      console.log("Think: ", parsedContent.content);
       messages.push({
         role: "assistant",
-        content: JSON.stringify(parsedResponse.content),
+        content: JSON.stringify(parsedContent.content),
       });
       continue;
     }
 
     if (parsedContent.step === "EVALUATE") {
-      console.log("Evaluate: ", parsedResponse.content);
+      console.log("Evaluate: ", parsedContent.content);
 
       continue;
     }
-    if (parsedResponse.step === "START") {
-      console.log("Start: ", parsedResponse.content);
+    if (parsedContent.step === "START") {
+      console.log("Start: ", parsedContent.content);
       messages.push({
         role: "assistant",
-        content: JSON.stringify(parsedResponse.content),
+        content: JSON.stringify(parsedContent.content),
       });
       continue;
     }
