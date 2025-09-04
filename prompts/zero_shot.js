@@ -10,7 +10,7 @@ const client = new OpenAI({
 async function main() {
   // These api calls are stateless (Zero Shot)
   const response = await client.chat.completions.create({
-    model: 'gpt-4.1-mini',
+     model: "gemini-1.5-flash",
     messages: [
       {
         role: 'system',

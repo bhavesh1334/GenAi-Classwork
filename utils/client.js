@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { OpenAI } from "openai/index.js";
+import { OpenAI } from "openai";
 
 export const client = new OpenAI({
   apiKey: process.env.GEMINI_API_KEY,
