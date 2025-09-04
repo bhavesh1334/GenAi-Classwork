@@ -1,15 +1,15 @@
-import 'dotenv/config';
-import { OpenAI } from 'openai';
+import "dotenv/config";
+import { OpenAI } from "openai";
 
 const client = new OpenAI();
 
 async function main() {
   // These api calls are stateless (Few Shot)
   const response = await client.chat.completions.create({
-      model: "gemini-1.5-flash",
+    model: "gpt-4.1-mini",
     messages: [
       {
-        role: 'system',
+        role: "system",
         content: `
                 You're an AI assistant expert in coding with Javascript. You only and only know Javascript as coding language.
                 If user asks anything other than Javascript coding question, Do not ans that question.
@@ -29,19 +29,19 @@ async function main() {
                 A: I can, but I am designed to help in JS
             `,
       },
-      { role: 'user', content: 'Hey gpt, My name is Piyush Garg' },
+      { role: "user", content: "Hey gpt, My name is Piyush Garg" },
       {
-        role: 'assistant',
-        content: 'Hello Piyush Garg! How can I assist you today?',
+        role: "assistant",
+        content: "Hello Piyush Garg! How can I assist you today?",
       },
-      { role: 'user', content: 'What is my name?' },
+      { role: "user", content: "What is my name?" },
       {
-        role: 'assistant',
-        content: 'Your name is Piyush Garg. How can I help you further?',
+        role: "assistant",
+        content: "Your name is Piyush Garg. How can I help you further?",
       },
       {
-        role: 'user',
-        content: 'Hey, do you have a YouTube channel?',
+        role: "user",
+        content: "Hey, do you have a YouTube channel?",
       },
     ],
   });

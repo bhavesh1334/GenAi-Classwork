@@ -1,4 +1,4 @@
-import OpenAI from "openai/index.js";
+import { OpenAI } from "openai";
 import "dotenv/config";
 
 const client = new OpenAI({
