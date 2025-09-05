@@ -12,6 +12,10 @@
   "license": "ISC",
   "packageManager": "pnpm@10.4.1",
   "dependencies": {
+    "@langchain/community": "^0.3.54",
+    "@langchain/core": "^0.3.73",
+    "@langchain/langgraph": "^0.4.9",
+    "@langchain/openai": "^0.6.11",
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
     "js-tiktoken": "^1.0.21",
